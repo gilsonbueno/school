@@ -82,6 +82,114 @@ function List() {
         edition: 7,
         image: '/images/Imagem11.jpg'
       },
+      {
+        id: '12',
+        name: 'Turma da monica quem acredita no papai noel 56 robo correndo',
+        edition: 56,
+        image: '/images/Imagem12.jpg'
+      },
+      {
+        id: '13',
+        name: 'Turma da monica todos a bordo do bidu-balao 59',
+        edition: 59,
+        image: '/images/Imagem13.jpg'
+      },
+      {
+        id: '14',
+        name: 'Turma da monica uma foto do limoeiro fotos',
+        edition: 0,
+        image: '/images/Imagem14.jpg'
+      },
+      {
+        id: '15',
+        name: 'Monica meme assustada azul',
+        edition: 0,
+        image: '/images/Imagem15.jpg'
+      },
+      {
+        id: '16',
+        name: 'Turma da monica a amarelinha radical dragao ogro fogo 57 shrek',
+        edition: 57,
+        image: '/images/Imagem16.jpg'
+      },
+      {
+        id: '17',
+        name: 'Cebolinha o clube dos genios mirins, detetive contrato terno 7',
+        edition: 7,
+        image: '/images/Imagem17.jpg'
+      },
+      {
+        id: '18',
+        name: 'Turma da monica o maior vilao de todos os tempos raios amarelo correndo',
+        edition: 7,
+        image: '/images/Imagem18.jpg'
+      },
+      {
+        id: '19',
+        name: ' Turma da monica tempo bom para festejar 4 aranha robo gemeas',
+        edition: 4,
+        image: '/images/Imagem19.jpg'
+      },
+      {
+        id: '20',
+        name: 'Monica cuidado que o jardim é meu 5 cebolinha monica correndo bruxa brava caverna verde',
+        edition: 5,
+        image: '/images/Imagem20.jpg'
+      },
+      {
+        id: '21',
+        name: 'Turma da monica lixo eletronico cientista 6 robos assustados',
+        edition: 6,
+        image: '/images/Imagem21.jpg'
+      },
+      {
+        id: '22',
+        name: 'Monica confusao na redacao lixeiro enfermeira bombeiro gato branco papel lapis 7',
+        edition: 7,
+        image: '/images/Imagem22.jpg'
+      },
+      {
+        id: '23',
+        name: '7 Magali o aumentador melancia banana frutas queijo amarelo bolinho',
+        edition: 7,
+        image: '/images/Imagem23.jpg'
+      },
+      {
+        id: '24',
+        name: '70 turma da monica tem muita lava nesse chao monica cebolinha cascao magali sofa verde',
+        edition: 70,
+        image: '/images/Imagem24.jpg'
+      },
+      {
+        id: '25',
+        name: '69 Turma da monica menos de uma legua submarina sereia marinheiro agua lula polvo mar capitao',
+        edition: 69,
+        image: '/images/Imagem25.jpg'
+      },
+      {
+        id: '26',
+        name: '4 Monica o misterioso desaparecimento da flor da carmen da esquina monica sansao cebolinha girassol',
+        edition: 4,
+        image: '/images/Imagem26.jpg'
+      },
+      {
+        id: '27',
+        name: '02 Alamanaque da monica cebolinha magali melancia cascao mauricio de sousa souza desenho mesa',
+        edition: 2,
+        image: '/images/Imagem27.jpg'
+      },
+      {
+        id: '28',
+        name: '85 Almanaque da monica previsao do tempo mapa roupa social vermelha camera microfone',
+        edition: 85,
+        image: '/images/Imagem28.jpg'
+      },
+      {
+        id: '29',
+        name: '03 Almanaque turma da monica selva barco rio agua peixe fantasma indio canoa',
+        edition: 3,
+        image: '/images/Imagem29.jpg'
+      },
     ];
 
     setBooks(listOfBooks);
@@ -89,20 +197,27 @@ function List() {
   }, []);
 
   function filter(query) {
-    const result = allBooks.filter(book => book.name.toLowerCase().includes(query));
-    setBooks(result);
+    const wordList = query.split(' ');
+    const filteredBooks = allBooks.filter(book => {
+      return wordList.every(word => {
+        return book.name.toLowerCase().includes(word);
+      }
+      )}
+    );
+  
+    setBooks(filteredBooks);
   }
 
   function handleChange(event) {
-    filter(event.target.value.toLowerCase());
+    filter(event.target.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase());
   }
 
 
   return (
     <div className='container'>
-      <div class="form__group field">
-        <input type="input" class="form__field" placeholder="Nome do Gibi" name="name" id='name' onChange={handleChange} />
-        <label for="name" class="form__label">Nome do Gibi</label>
+      <div className="form__group field">
+        <input type="input" className="form__field" placeholder="Nome do Gibi" name="name" id='name' onChange={handleChange} />
+        <label for="name" className="form__label">Nome do Gibi</label>
       </div>
 
       {books.map(item => (
