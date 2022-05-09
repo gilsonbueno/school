@@ -6,8 +6,23 @@ function Home() {
     <div className='container'>
       <p className='title'>Gibis Turma da Monica</p>
       <List />
+      <button onClick={topFunction} id="myBtn" title="Go to top">Topo da pagina</button>
     </div>
   )
+}
+
+function scrollFunction() {
+  let mybutton = document.getElementById("myBtn");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function List() {
@@ -15,6 +30,7 @@ function List() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
+    window.onscroll = function() {scrollFunction()};
     const listOfBooks = [
       {
         id: '1',
@@ -189,6 +205,84 @@ function List() {
         name: '03 Almanaque turma da monica selva barco rio agua peixe fantasma indio canoa',
         edition: 3,
         image: '/images/Imagem29.jpg'
+      },
+      {
+        id: '30',
+        name: '51 turma da monica tem lugar pra todo mundo nessa turma parquinho escorrega mauricio souza sousa',
+        edition: 51,
+        image: '/images/Imagem30.jpg'
+      },
+      {
+        id: '31',
+        name: '02 Almanaque turma da monica vulcao et robo elefante indio',
+        edition: 2,
+        image: '/images/Imagem31.jpg'
+      },
+      {
+        id: '32',
+        name: '07 Almanaque da magali bicicleta flores cestinha comida',
+        edition: 7,
+        image: '/images/Imagem32.jpg'
+      },
+      {
+        id: '33',
+        name: '14 Cascao eo pe de melao feijao ceu arvore cebolinha',
+        edition: 14,
+        image: '/images/Imagem33.jpg'
+      },
+      {
+        id: '34',
+        name: '14 cebolinha um bone muito descolado patinete sansao',
+        edition: 14,
+        image: '/images/Imagem34.jpg'
+      },
+      {
+        id: '35',
+        name: '07 Almanaque do chico bento pintando quadro boina vermelha',
+        edition: 7,
+        image: '/images/Imagem35.jpg'
+      },
+      {
+        id: '36',
+        name: '06 Almanaque da magali conta padaria comida pao lista',
+        edition: 6,
+        image: '/images/Imagem36.jpg'
+      },
+      {
+        id: '37',
+        name: '14 Monica a origem do caos anjinho anjo nuvem dinossauro vulcao',
+        edition: 14,
+        image: '/images/Imagem37.jpg'
+      },
+      {
+        id: '38',
+        name: '14 turma da monica eliminados palco cortina polvo lula jacare crocodilo luzes',
+        edition: 14,
+        image: '/images/Imagem38.jpg'
+      },
+      {
+        id: '39',
+        name: '07 almanaque da monica selfie celular piscando foto rosa',
+        edition: 7,
+        image: '/images/Imagem39.jpg'
+      },
+      {
+        id: '40',
+        name: '07 almanaque turma da monica pedras carro elefante amarelo indio et',
+        edition: 7,
+        image: '/images/Imagem40.jpg'
+      },
+      {
+        id: '41',
+        name: '05 turma da monica prazer sou o novo vilao furacao tornado malvado',
+        edition: 5,
+        image: '/images/Imagem41.jpg'
+      },
+      {
+        id: '42',
+        name: '06 almanaque da monica jogo da velha tabela rosto mostrando a lingua cebolinha sansao coelho lapis',
+        edition: 6,
+        image: '/images/Imagem42.jpg'
       },
     ];
 
